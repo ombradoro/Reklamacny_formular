@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reklamačný formulár - Ombra D'Oro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #1a1410 0%, #2d2416 50%, #1a1410 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #d4af37;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.02);
+            border: 2px solid #d4af37;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 60px rgba(212, 175, 55, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .logo-section img {
+            max-width: 250px;
+            height: auto;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #d4af37;
+            font-size: 32px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #b8963c;
+            font-size: 14px;
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #d4af37;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .required {
+            color: #ff6b6b;
+            margin-left: 3px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px 16px;
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            color: #e8d7a8;
+            font-size: 15px;
+            font-family: 'Georgia', serif;
+            transition: all 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #d4af37;
+            background: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .radio-group {
+            margin-top: 12px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .radio-option:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: #d4af37;
+        }
+
+        .radio-label {
+            color: #e8d7a8;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .section-title {
+            color: #d4af37;
+            font-size: 18px;
+            font-weight: 500;
+            margin: 35px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            letter-spacing: 1px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #d4af37 0%, #c19a2e 100%);
+            border: none;
+            border-radius: 10px;
+            color: #1a1410;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 30px;
+            font-family: 'Georgia', serif;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .info-text {
+            color: #b8963c;
+            font-size: 13px;
+            font-style: italic;
+            margin-top: 8px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .logo-section img {
+                max-width: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-section">
+            <img src="https://ombradoro.t2.upgates.shop/uploads/8/2/4/0/824030f76f53b42c5b36ad82854f61e8.png" alt="Ombra D'Oro Logo">
+            <h1>Reklamačný formulár</h1>
+            <p class="subtitle">Sme tu pre vás a pomôžeme vyriešiť akýkoľvek problém</p>
+        </div>
+
+        <form action="https://formspree.io/f/xblplvyn" method="POST">
+            <!-- Kontaktné údaje -->
+            <div class="form-group">
+                <label>Meno a priezvisko <span class="required">*</span></label>
+                <input type="text" name="meno_priezvisko" required>
+            </div>
+
+            <div class="form-group">
+                <label>E-mail <span class="required">*</span></label>
+                <input type="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label>Telefónny kontakt <span class="required">*</span></label>
+                <input type="tel" name="telefon" required>
+            </div>
+
+            <!-- Informácie o objednávke -->
+            <div class="section-title">Informácie o objednávke</div>
+
+            <div class="form-group">
+                <label>Číslo objednávky alebo faktúry <span class="required">*</span></label>
+                <input type="text" name="cislo_objednavky" required>
+            </div>
+
+            <div class="form-group">
+                <label>Názov produktu <span class="required">*</span></label>
+                <input type="text" name="nazov_produktu" required>
+            </div>
+
+            <div class="form-group">
+                <label>Počet kusov <span class="required">*</span></label>
+                <input type="text" name="pocet_kusov" required>
+            </div>
+
+            <!-- Dôvod reklamácie -->
+            <div class="section-title">Dôvod reklamácie</div>
+
+            <div class="form-group">
+                <label>Vyberte dôvod vrátenia <span class="required">*</span></label>
+                <select name="dovod_vratenia" id="dovodSelect" required onchange="toggleCustomReason()">
+                    <option value="">-- Vyberte dôvod --</option>
+                    <option value="Nesadla veľkosť">Nesadla veľkosť</option>
+                    <option value="Poškodený tovar">Poškodený tovar</option>
+                    <option value="Iný dôvod">Iný dôvod</option>
+                </select>
+            </div>
+
+            <div class="form-group hidden" id="customReasonGroup">
+                <label>Popíšte váš dôvod vrátenia</label>
+                <textarea name="vlastny_dovod" id="customReason" rows="4"></textarea>
+            </div>
+
+            <!-- Preferované riešenie -->
+            <div class="section-title">Preferované riešenie</div>
+
+            <div class="form-group">
+                <div class="radio-group">
+                    <div class="radio-option">
+                        <input type="radio" id="vratenie" name="riesenie" value="Vrátenie peňazí" required>
+                        <label for="vratenie" class="radio-label">Vrátenie peňazí</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="vymena" name="riesenie" value="Výmena tovaru">
+                        <label for="vymena" class="radio-label">Výmena tovaru</label>
+                    </div>
+                    <div class="radio-option">
+                        <input type="radio" id="alternativa" name="riesenie" value="Hľadanie alternatívy">
+                        <label for="alternativa" class="radio-label">Budem rád/a za ak mi nájdete vhodnú alternatívu, ktorá bude spĺňať moje požiadavky</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dodatočné informácie -->
+            <div class="section-title">Dodatočné informácie</div>
+
+            <div class="form-group">
+                <label>Doplňujúce poznámky</label>
+                <textarea name="poznamky" rows="5" placeholder="Pridajte ďalšie informácie, ktoré nám pomôžu vyriešiť vašu reklamáciu..."></textarea>
+                <p class="info-text">* Napríklad: stav obalu, fotografie poškodenia, preferovaný spôsob komunikácie, atď.</p>
+            </div>
+
+            <div class="form-group">
+                <label>Prílohy (fotografie poškodenia, produktu, faktúry...)</label>
+                <input type="file" name="prilohy" id="fileInput" multiple accept="image/*,.pdf" style="padding: 10px;">
+                <p class="info-text">* Ak potrebujete priložiť fotografie, môžete ich nahrať priamo tu, alebo ich zašlite na e-mail: <strong style="color: #d4af37;">reklamacie@ombradoro.sk</strong> s uvedením čísla objednávky.</p>
+            </div>
+
+            <p class="info-text" style="margin-top: 30px; text-align: center;">
+                Vašu reklamáciu spracujeme do 3 pracovných dní a budeme vás kontaktovať na uvedenom e-maile alebo telefónnom čísle.
+            </p>
+
+            <button type="submit" class="submit-btn">Odoslať reklamáciu</button>
+        </form>
+    </div>
+
+    <script>
+        function toggleCustomReason() {
+            const select = document.getElementById('dovodSelect');
+            const customGroup = document.getElementById('customReasonGroup');
+            const customReason = document.getElementById('customReason');
+            
+            if (select.value === 'Iný dôvod') {
+                customGroup.classList.remove('hidden');
+                customReason.required = true;
+            } else {
+                customGroup.classList.add('hidden');
+                customReason.required = false;
+            }
+        }
+    </script>
+</body>
+</html>
